@@ -1,0 +1,69 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.2.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+		maven { url 'http://repo.spring.io/plugins-release' }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath("org.springframework.build.gradle:propdeps-plugin:0.0.7")
+	}
+}
+
+configure(allprojects) {
+	apply plugin: 'propdeps'
+	apply plugin: 'propdeps-maven'
+	apply plugin: 'propdeps-idea'
+	apply plugin: 'propdeps-eclipse'
+}
+
+apply plugin: 'groovy'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'war'
+
+war {
+	baseName = 'gricket'
+	version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+sourceSets {
+    main {
+        groovy {
+            srcDir 'src/main/groovy'
+        }
+        resources {
+			srcDir 'src/main/resources'
+			srcDir 'src/main/groovy'
+		}
+    }
+}
+
+repositories {
+	mavenCentral()
+}
+
+configurations {
+	providedRuntime
+}
+
+dependencies {
+	compile('org.codehaus.groovy:groovy')
+//    compile('org.grails:gorm-hibernate5-spring-boot:6.0.3.RELEASE')
+    compile('com.giffing.wicket.spring.boot.starter:wicket-spring-boot-starter:1.0.1')
+	compile('org.springframework.boot:spring-boot-starter-security')
+	compile('de.agilecoders.wicket:wicket-bootstrap-core:0.10.11')
+	compile('de.agilecoders.wicket:wicket-bootstrap-extensions:0.10.11')
+	compile('de.agilecoders.wicket:wicket-bootstrap-less:0.10.11')
+	compile('de.agilecoders.wicket:wicket-bootstrap-themes:0.10.11')
+	compile('org.wicketstuff:wicketstuff-annotation:7.5.0')
+	optional('org.springframework.boot:spring-boot-configuration-processor')
+	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+compileJava.dependsOn(processResources)

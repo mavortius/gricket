@@ -1,0 +1,12 @@
+wicket:
+  external:
+    agilcoders:
+      bootstrap:
+        theme: flatly
+  core:
+    settings:
+      general:
+        configuration-type: development
+      requestcycle:
+        timeout-size: 1
+        timeout-unit: minutes
