@@ -34,8 +34,8 @@ class LoginPage extends WebPage {
         LoginForm(String id) {
             super(id)
 
-            setModel(new CompoundPropertyModel<>(this))
-            //model = new CompoundPropertyModel<>(this)
+            //setModel(new CompoundPropertyModel<>(this))
+            model = new CompoundPropertyModel<>(this)
 
             add(new FeedbackPanel('feedback'))
             add(new RequiredTextField<String>('username'))
