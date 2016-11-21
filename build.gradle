@@ -54,6 +54,8 @@ configurations {
 dependencies {
 	compile('org.codehaus.groovy:groovy')
     compile('org.grails:gorm-hibernate5-spring-boot:6.0.3.RELEASE')
+	compile('org.hibernate:hibernate-core:5.0.11.Final')
+	compile('org.hibernate:hibernate-ehcache:5.0.11.Final')
     compile('com.giffing.wicket.spring.boot.starter:wicket-spring-boot-starter:1.0.1')
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('de.agilecoders.wicket:wicket-bootstrap-core:0.10.11')

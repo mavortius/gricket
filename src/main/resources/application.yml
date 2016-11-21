@@ -10,9 +10,13 @@ wicket:
       requestcycle:
         timeout-size: 1
         timeout-unit: minutes
+hibernate:
+  hbm2ddl:
+    auto: none
+  dialect: org.hibernate.dialect.MySQL5InnoDBDialect
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/northwind
     username: root
-    password: 606638
+    password: sepai123
     driver-class-name: com.mysql.jdbc.Driver
